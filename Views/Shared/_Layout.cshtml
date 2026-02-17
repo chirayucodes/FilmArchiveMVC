@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FilmArchive</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FilmArchive.styles.css" asp-append-version="true" />
+
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+        }
+
+        /* Navbar Styling */
+        .navbar-custom {
+            background: linear-gradient(90deg, #000000, #1c1c1c);
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f5c518 !important;
+            animation: glow 2s infinite alternate;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+            .nav-link:hover {
+                color: #f5c518 !important;
+                transform: scale(1.05);
+            }
+
+        .search-box {
+            width: 250px;
+            border-radius: 20px;
+            padding-left: 15px;
+        }
+
+        footer {
+            background-color: #000;
+            padding: 10px 0;
+            text-align: center;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 🔥 Fancy Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow">
+            <div class="container-fluid">
+
+                <!-- Animated Logo -->
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    🎬 FilmArchiveDB
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarContent">
+
+                    <!-- Left Side Links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Movies" asp-action="Index">
+                                Movies
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Genres" asp-action="Index">
+                                Genres
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Cast" asp-action="Index">
+                                Cast
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+                    <!-- Search Bar -->
+                    <form class="d-flex">
+                        <input class="form-control me-2 search-box"
+                               type="search"
+                               placeholder="Search movies..."
+                               aria-label="Search">
+                        <button class="btn btn-warning" type="submit">
+                            Search
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Body -->
+    <div class="container mt-4">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 - 🎥 FilmArchiveDB | Built with ASP.NET Core
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

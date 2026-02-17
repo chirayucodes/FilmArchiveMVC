@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Film Archive(IMaybeDB)";
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                    url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
+    }
+
+    .hero-section {
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-section h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #f5c518; /* IMDB gold */
+    }
+
+    .hero-section p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    .btn-custom {
+        margin: 10px;
+        padding: 12px 25px;
+        font-size: 1.1rem;
+        border-radius: 30px;
+        transition: 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        transform: scale(1.05);
+    }
+
+</style>
+
+<div class="hero-section">
+    <h1>🎬 Film Archive(IMaybeDB)</h1>
+    <p>Your Ultimate Movie Collection Database</p>
+
+    <div>
+        <a asp-controller="Movies" asp-action="Index" class="btn btn-warning btn-custom">
+            View Movies
+        </a>
+
+        <a asp-controller="Genres" asp-action="Index" class="btn btn-outline-light btn-custom">
+            View Genres
+        </a>
+
+        <a asp-controller="Cast" asp-action="Index" class="btn btn-outline-info btn-custom">
+            View Cast
+        </a>
+
+        <a asp-controller="Movies" asp-action="Create" class="btn btn-success btn-custom">
+            Add New Movie
+        </a>
+    </div>
+</div>
