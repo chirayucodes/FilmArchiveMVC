@@ -1,10 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FilmArchive.Data;
+using FilmArchive.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FilmArchive.Controllers
 {
-    public async Task<IActionResult> Index()
+    public class MovieController : Controller
     {
-        var movies = await _context.Movies.ToListAsync();
-        return View(movies);
+        private readonly FilmArchiveContext _context;
+        public MovieController(FilmArchiveContext context)
+        {
+            _context = context;
+        }
+        public IActionResult Index()
+        {
+            FilmArchiveContext context = new();
+            IEnumerable<Movies> movies = context.Movie.ToList()
+            .Select(m => new Movies
+            {
+                MovieID = m.MovieID,
+                Title = m.Title,
+                ReleaseYear = m.ReleaseYear,
+                DurationInMinutes = m.DurationInMinutes,
+                IsSeries = m.IsSeries
+            }).ToList();
+
+            return View(context);
+
+        }
     }
+
 }
