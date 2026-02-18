@@ -11,22 +11,26 @@ namespace FilmArchive.Controllers
         {
             _context = context;
         }
+
         public IActionResult Index()
         {
-            FilmArchiveContext context = new();
-            IEnumerable<Movies> movies = context.Movie.ToList()
-            .Select(m => new Movies
+
+            IEnumerable<MoviesViewModel> movies = _context.Movies
+            .Select(m => new MoviesViewModel
             {
                 MovieID = m.MovieID,
                 Title = m.Title,
                 ReleaseYear = m.ReleaseYear,
-                DurationInMinutes = m.DurationInMinutes,
+                DurationMinutes = m.DurationMinutes,
+                Language= m.Language,
                 IsSeries = m.IsSeries
             }).ToList();
 
-            return View(context);
+            return View(movies);
 
         }
+
+      
     }
 
 }
