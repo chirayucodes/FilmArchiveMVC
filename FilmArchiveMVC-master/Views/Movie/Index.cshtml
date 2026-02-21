@@ -1,0 +1,110 @@
+﻿@model IEnumerable<FilmArchive.Models.MoviesViewModel>
+
+<h2>Movies</h2>
+<table class="table table-dark table-striped">
+@* <table style="border-collapse:separate; border-spacing:0 12px; width:100%;"> *@
+
+    <thead>
+        <tr>
+            <th>MovieID</th>
+            <th>Title</th>
+            <th>Release Year</th>
+            <th>DurationMinutes</th>
+            <th>Language</th>
+            <th>IsSeries</th>
+        </tr>
+    </thead>
+    <tbody style="font-family:Segoe UI, sans-serif;">
+
+        @foreach (var movie in Model)
+        {
+            
+            <tr style="transition:0.3s ease-in-out;"
+                onmouseover="this.style.backgroundColor='#1e1e2f'; this.style.color='white'; this.style.transform='scale(1.01)';"
+                onmouseout="this.style.backgroundColor=''; this.style.color=''; this.style.transform='scale(1)';">
+
+                <!-- Movie ID -->
+                <td style="font-weight:bold; color:#888;">
+                    @movie.MovieID
+                </td>
+
+                <!-- Title -->
+                <td style="font-size:16px; font-weight:600; color:#95baba;">
+                    🎬 @movie.Title
+                </td>
+
+                <!-- Release Year -->
+                <td>
+                    <span style="background:#3498db; color:white; padding:4px 8px; border-radius:12px; font-size:12px;">
+                        @movie.ReleaseYear
+                    </span>
+                </td>
+                    
+                <!-- Duration -->
+                <td style="color:#95baba; font-weight:500;">
+                    ⏳ @movie.DurationMinutes min
+                </td>
+
+                <!-- Language -->
+                <td style="font-style:italic; color:#95baba;">
+                    🌎 @movie.Language
+                </td>
+
+                <!-- Type -->
+                <td>
+                    @if (movie.IsSeries)
+                    {
+                        <span style="background-color:#e74c3c; color:white; padding:4px 10px; border-radius:15px; font-size:12px;">
+                            Series
+                        </span>
+                    }
+                    else
+                    {
+                        <span style="background-color:#2ecc71; color:white; padding:4px 10px; border-radius:15px; font-size:12px;">
+                            Movie
+                        </span>
+                    }
+                </td>
+
+                <!-- OTT Logos -->
+        <td style="display:flex; gap:10px; align-items:center;">
+
+            <!-- Netflix -->
+            <a href="https://www.netflix.com" target="_blank"
+               style="display:inline-block; transition:0.3s;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+                     alt="Netflix"
+                             style="height:28px; background:#2c3034; padding:5px; border-radius:8px;"
+                     onmouseover="this.style.transform='scale(1.1)'"
+                     onmouseout="this.style.transform='scale(1)'"/>
+            </a>
+
+            <!-- Amazon Prime -->
+            <a href="https://www.primevideo.com" target="_blank"
+               style="display:inline-block; transition:0.3s;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png"
+                     alt="Prime Video"
+                     style="height:28px; background:white; padding:5px; border-radius:8px;"
+                     onmouseover="this.style.transform='scale(1.1)'"
+                     onmouseout="this.style.transform='scale(1)'"/>
+            </a>
+
+            <!-- Disney+ Hotstar -->
+            <a href="https://www.hotstar.com" target="_blank"
+               style="display:inline-block; transition:0.3s;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Disney%2B_Hotstar_logo.svg"
+                     alt="Hotstar"
+                             style="height:28px; background:white; padding:5px; border-radius:8px;"
+                     onmouseover="this.style.transform='scale(1.1)'"
+                     onmouseout="this.style.transform='scale(1)'"/>
+            </a>
+
+        </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+
+</table>
