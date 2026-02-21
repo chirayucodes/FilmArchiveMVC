@@ -57,61 +57,108 @@
 <body>
 
     <!-- 🔥 Fancy Navbar -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow">
-            <div class="container-fluid">
+    <!-- Navbar -->
+    <div class="container position-sticky z-index-sticky top-0">
+        <div class="row">
+            <div class="col-12">
 
-                <!-- Animated Logo -->
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    🎬 FilmArchiveDB
-                </a>
+                <nav class="navbar navbar-expand-lg shadow position-absolute start-0 end-0 mx-auto my-4"
+                        style="
+                        width: 92%;
+                        background: rgba(0, 0, 0, 0.55);
+                        backdrop-filter: blur(15px);
+                        -webkit-backdrop-filter: blur(15px);
+                        border-radius: 25px;
+                        border: 1px solid rgba(255,255,255,0.15);
+                        padding: 12px 30px;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+                                                                 ">
+                    <div class="container-fluid">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                        <!-- Logo / Brand -->
+                        <a class="navbar-brand font-weight-bold text-white ms-3"
+                           asp-controller="Home" asp-action="Index"
+                           style="font-size:20px; letter-spacing:1px;">
+                            🎬 FilmArchiveDB
+                        </a>
 
-                <div class="collapse navbar-collapse" id="navbarContent">
-
-                    <!-- Left Side Links -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Movie" asp-action="Index">
-                                Movies
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Genres" asp-action="Index">
-                                Genres
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Cast" asp-action="Index">
-                                Cast
-                            </a>
-                        </li>
-
-
-                    </ul>
-
-                    <!-- Search Bar -->
-                    <form class="d-flex">
-                        <input class="form-control me-2 search-box"
-                               type="search"
-                               placeholder="Search movies..."
-                               aria-label="Search">
-                        <button class="btn btn-warning" type="submit">
-                            Search
+                        <button class="navbar-toggler shadow-none ms-2" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#navigation">
+                            <span class="navbar-toggler-icon"></span>
                         </button>
-                    </form>
 
-                </div>
+                        <div class="collapse navbar-collapse" id="navigation">
+
+                            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                                <!-- Movies -->
+                                <li class="nav-item mx-2">
+                                    <a class="nav-link text-white"
+                                       asp-controller="Movie" asp-action="Index">
+                                        🎥 Movies
+                                    </a>
+                                </li>
+
+                                <!-- Genres -->
+                                <li class="nav-item mx-2">
+                                    <a class="nav-link text-white"
+                                       asp-controller="Genres" asp-action="Index">
+                                        🎭 Genres
+                                    </a>
+                                </li>
+
+                                <!-- Cast -->
+                                <li class="nav-item mx-2">
+                                    <a class="nav-link text-white"
+                                       asp-controller="Cast" asp-action="Index">
+                                        👥 Cast
+                                    </a>
+                                </li>
+
+                                <!-- Top Rated -->
+                                <li class="nav-item mx-2">
+                                    <a class="nav-link text-warning"
+                                       asp-controller="Movie" asp-action="TopRated">
+                                        ⭐ Top Rated
+                                    </a>
+                                </li>
+
+                                <!-- Trending -->
+                                <li class="nav-item mx-2">
+                                    <a class="nav-link text-danger"
+                                       asp-controller="Movie" asp-action="Trending">
+                                        🔥 Trending
+                                    </a>
+                                </li>
+
+                                <!-- Add Movie -->
+                                <li class="nav-item mx-2">
+                                    <a class="btn btn-success btn-sm"
+                                       asp-controller="Movies" asp-action="Create">
+                                        ➕ Add Movie
+                                    </a>
+                                </li>
+
+                                <!-- Search -->
+                                <li class="nav-item ms-3">
+                                    <form asp-controller="Movie" asp-action="Search" method="get" class="d-flex">
+                                        <input type="text" name="query"
+                                               placeholder="Search movies..."
+                                               style="border-radius:20px; padding:5px 12px; border:none;">
+                                    </form>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </nav>
+
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
+    <!-- End Navbar -->
+
 
     <!-- Main Body -->
     <div class="container mt-4">
